@@ -11,7 +11,7 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     display: flex;
     justify-content: center;
@@ -31,16 +31,16 @@ body {
 }
 
 .container {
-    max-width: 1100px;
+    width: 95%;
+    max-width: 900px;
     padding: 20px;
 }
 
 h1 {
     font-family: 'Bangers', cursive;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    letter-spacing: 3px;
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    letter-spacing: 2px;
     text-shadow: 4px 4px 0px black, 8px 8px 0px #ff00cc;
-    animation: pulse 1.5s infinite;
 }
 
 h1 em {
@@ -48,45 +48,42 @@ h1 em {
     color: #ffff00;
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
 .countdown {
-    margin-top: 30px;
-    font-size: 2rem;
+    margin-top: 25px;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     font-weight: bold;
     background: rgba(0,0,0,0.6);
-    padding: 15px 30px;
+    padding: 12px 25px;
     border-radius: 20px;
     display: inline-block;
     box-shadow: 0 0 20px #ffff00;
 }
 
-/* Characters */
+/* Otto */
 .characters {
-    margin-top: 30px;
+    margin: 25px 0;
 }
 
 .characters img {
-    height: 220px;
+    max-width: 220px;
+    width: 60%;
+    height: auto;
     filter: drop-shadow(0 0 15px black);
 }
 
-/* Buttons horizontal */
+/* Buttons */
 .buttons {
-    margin-top: 40px;
+    margin-top: 30px;
     display: flex;
     justify-content: center;
-    gap: 40px;
-    flex-wrap: nowrap;
+    gap: 15px;
 }
 
 .btn {
-    padding: 25px 60px;
-    font-size: 1.8rem;
+    flex: 1;
+    max-width: 220px;
+    padding: 18px 0;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
     font-weight: bold;
     border: 4px solid white;
     border-radius: 60px;
@@ -94,64 +91,40 @@ h1 em {
     text-decoration: none;
     transition: transform 0.3s ease;
     animation: flash 1.5s infinite;
-    white-space: nowrap;
 }
 
 .btn:hover {
-    transform: scale(1.15) rotate(-2deg);
+    transform: scale(1.08);
 }
 
 .lock {
     background: #ff0000;
     color: yellow;
-    box-shadow: 0 0 30px #ff0000;
+    box-shadow: 0 0 20px #ff0000;
 }
 
 .wet {
     background: #00ffff;
     color: black;
-    box-shadow: 0 0 30px #00ffff;
+    box-shadow: 0 0 20px #00ffff;
 }
 
 @keyframes flash {
     0% { opacity: 1; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.7; }
     100% { opacity: 1; }
 }
 
 .expired {
-    font-size: 2rem;
-    margin-top: 20px;
+    font-size: 1.5rem;
+    margin-top: 15px;
     color: #ff0000;
     display: none;
-}
-
-/* Side characters floating */
-.side {
-    position: absolute;
-    bottom: 0;
-    height: 260px;
-    opacity: 0.9;
-}
-
-.left { left: 20px; }
-.right { right: 20px; }
-
-@media (max-width: 768px) {
-    .side {
-        display: none;
-    }
 }
 </style>
 </head>
 
 <body>
-
-<!-- Reggie -->
-<img class="side left" src="https://upload.wikimedia.org/wikipedia/en/5/5a/Reggie_Rocket.png">
-
-<!-- Twister -->
-<img class="side right" src="https://upload.wikimedia.org/wikipedia/en/6/6f/Twister_Rodriguez.png">
 
 <div class="container">
 
@@ -163,9 +136,10 @@ h1 em {
         Loading countdown...
     </div>
 
-    <!-- Otto centered between timer and buttons -->
     <div class="characters">
-        <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/Otto_Rocket.png" alt="Otto disappointed holding surfboard">
+        <!-- Reliable hosted Otto PNG -->
+        <img src="https://static.wikia.nocookie.net/rocketpower/images/0/0e/Otto_Rocket.png" 
+             alt="Otto disappointed holding surfboard">
     </div>
 
     <div class="expired" id="expiredMessage">
@@ -214,4 +188,9 @@ function updateCountdown() {
     timer.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
 }
 
-set
+setInterval(updateCountdown, 1000);
+updateCountdown();
+</script>
+
+</body>
+</html>
