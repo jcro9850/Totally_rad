@@ -8,127 +8,164 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Orbitron:wght@700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        font-family: 'Orbitron', sans-serif;
-        color: white;
-        background: linear-gradient(135deg, #ff00cc, #00ffff, #ff6600);
-        background-size: 400% 400%;
-        animation: bgShift 8s ease infinite;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #ff00cc, #00ffff, #ff6600);
+    background-size: 400% 400%;
+    animation: bgShift 8s ease infinite;
+}
 
-    @keyframes bgShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+@keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    .container {
-        z-index: 2;
-        max-width: 1000px;
-        padding: 20px;
-    }
+.container {
+    max-width: 1100px;
+    padding: 20px;
+}
 
-    h1 {
-        font-family: 'Bangers', cursive;
-        font-size: clamp(2.5rem, 6vw, 5rem);
-        letter-spacing: 3px;
-        text-shadow: 
-            4px 4px 0px black,
-            8px 8px 0px #ff00cc;
-        animation: pulse 1.5s infinite;
-    }
+h1 {
+    font-family: 'Bangers', cursive;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: 3px;
+    text-shadow: 4px 4px 0px black, 8px 8px 0px #ff00cc;
+    animation: pulse 1.5s infinite;
+}
 
-    h1 em {
-        font-style: italic;
-        color: #ffff00;
-    }
+h1 em {
+    font-style: italic;
+    color: #ffff00;
+}
 
-    @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-        100% { transform: scale(1); }
-    }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
-    .countdown {
-        margin-top: 30px;
-        font-size: 2rem;
-        font-weight: bold;
-        background: rgba(0,0,0,0.6);
-        padding: 15px 30px;
-        border-radius: 20px;
-        display: inline-block;
-        box-shadow: 0 0 20px #ffff00;
-    }
+.countdown {
+    margin-top: 30px;
+    font-size: 2rem;
+    font-weight: bold;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 30px;
+    border-radius: 20px;
+    display: inline-block;
+    box-shadow: 0 0 20px #ffff00;
+}
 
-    .buttons {
-        margin-top: 40px;
-        display: flex;
-        justify-content: center;
-        gap: 40px;
-        flex-wrap: wrap;
-    }
+/* Characters */
+.characters {
+    margin-top: 30px;
+}
 
-    .btn {
-        padding: 25px 60px;
-        font-size: 1.8rem;
-        font-weight: bold;
-        border: 4px solid white;
-        border-radius: 60px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: transform 0.3s ease;
-        animation: flash 1.5s infinite;
-    }
+.characters img {
+    height: 220px;
+    filter: drop-shadow(0 0 15px black);
+}
 
-    .btn:hover {
-        transform: scale(1.15) rotate(-2deg);
-    }
+/* Buttons horizontal */
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: nowrap;
+}
 
-    .lock {
-        background: #ff0000;
-        color: yellow;
-        box-shadow: 0 0 30px #ff0000;
-    }
+.btn {
+    padding: 25px 60px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border: 4px solid white;
+    border-radius: 60px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+    animation: flash 1.5s infinite;
+    white-space: nowrap;
+}
 
-    .wet {
-        background: #00ffff;
-        color: black;
-        box-shadow: 0 0 30px #00ffff;
-    }
+.btn:hover {
+    transform: scale(1.15) rotate(-2deg);
+}
 
-    @keyframes flash {
-        0% { opacity: 1; }
-        50% { opacity: 0.6; }
-        100% { opacity: 1; }
-    }
+.lock {
+    background: #ff0000;
+    color: yellow;
+    box-shadow: 0 0 30px #ff0000;
+}
 
-    .expired {
-        font-size: 2rem;
-        margin-top: 20px;
-        color: #ff0000;
+.wet {
+    background: #00ffff;
+    color: black;
+    box-shadow: 0 0 30px #00ffff;
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+.expired {
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #ff0000;
+    display: none;
+}
+
+/* Side characters floating */
+.side {
+    position: absolute;
+    bottom: 0;
+    height: 260px;
+    opacity: 0.9;
+}
+
+.left { left: 20px; }
+.right { right: 20px; }
+
+@media (max-width: 768px) {
+    .side {
         display: none;
     }
-
+}
 </style>
 </head>
 
 <body>
 
+<!-- Reggie -->
+<img class="side left" src="https://upload.wikimedia.org/wikipedia/en/5/5a/Reggie_Rocket.png">
+
+<!-- Twister -->
+<img class="side right" src="https://upload.wikimedia.org/wikipedia/en/6/6f/Twister_Rodriguez.png">
+
 <div class="container">
+
     <h1>
         Oh no, you’re about to miss a <em>rocket powered</em> session
     </h1>
 
     <div class="countdown" id="timer">
         Loading countdown...
+    </div>
+
+    <!-- Otto centered between timer and buttons -->
+    <div class="characters">
+        <img src="https://upload.wikimedia.org/wikipedia/en/3/3e/Otto_Rocket.png" alt="Otto disappointed holding surfboard">
     </div>
 
     <div class="expired" id="expiredMessage">
@@ -144,51 +181,37 @@
             WET TOWEL
         </a>
     </div>
+
 </div>
 
 <script>
-    function getAESTTargetTime() {
-        const now = new Date();
-        
-        // Convert to AEST (UTC+10)
-        const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-        const aestNow = new Date(utc + (3600000 * 10));
+function getAESTTargetTime() {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const aestNow = new Date(utc + (3600000 * 10));
+    const target = new Date(aestNow);
+    target.setHours(19, 0, 0, 0);
+    return { now: aestNow, target: target };
+}
 
-        const target = new Date(aestNow);
-        target.setHours(19, 0, 0, 0); // 7:00 PM AEST today
+function updateCountdown() {
+    const { now, target } = getAESTTargetTime();
+    const diff = target - now;
 
-        return {
-            now: aestNow,
-            target: target
-        };
+    const timer = document.getElementById("timer");
+    const expired = document.getElementById("expiredMessage");
+
+    if (diff <= 0) {
+        timer.style.display = "none";
+        expired.style.display = "block";
+        return;
     }
 
-    function updateCountdown() {
-        const { now, target } = getAESTTargetTime();
-        const diff = target - now;
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        const timer = document.getElementById("timer");
-        const expired = document.getElementById("expiredMessage");
+    timer.innerHTML = hours + "h " + minutes + "m " + seconds + "s";
+}
 
-        if (diff <= 0) {
-            timer.style.display = "none";
-            expired.style.display = "block";
-            return;
-        }
-
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        timer.innerHTML = 
-            hours + "h " +
-            minutes + "m " +
-            seconds + "s";
-    }
-
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-</script>
-
-</body>
-</html>
+set
